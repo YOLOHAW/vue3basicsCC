@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VueJs Learning</title>
+    <script src="https://unpkg.com/vue@3.0.2/dist/vue.global.js"></script>
+    <style>
+        li{
+            list-style: none;
+        }
+        .favourite{
+            background-color: skyblue;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <div v-if="showBook">
+        <ul v-for="book in filteredBooks">
+        <img :src="book.img"  width="300" height="200">
+        <li :class="{favourite:book.isFav}" @click="favBookhandler(book)">
+        <h3>{{book.title}}</h3>
+        <p>{{book.author}}</p>
+        <p>{{book.age}}</p>
+        <a :href="link">GitHub</a>
+        <hr>
+        </li>
+        </ul>
+    </div>
+        <!-- <button @click="showBook=false">Hide Book</button>
+        <button @click="showBook=true">Show Book</button> -->
+        <button @click="showBook=!showBook">
+            <span v-if="showBook">Hide</span>
+            <span v-if="!showBook">Show</span>
+        </button>
+
+        <br><br>
+        <p>Age = {{age}}</p>
+        <button v-on:click="IncreaseAge">IncreaseAge</button>
+        <br>
+        <p>My name is {{name}}</p>
+        <button @click="name='Thomas Shelby'">Change UK Name</button>
+        
+        <br><br>
+        <div><button @mouseover="mouseoverHandler($event,'Data From index.html')">MouseOver</button></div>
+        <div><button @mouseleave="mouseleaveHandler">MouseLeave</button></div>
+        <div><button @dblclick="mousedoubleClicked">Double Click Here</button></div>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>
